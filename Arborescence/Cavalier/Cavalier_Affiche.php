@@ -134,55 +134,27 @@ include('../include/defines.inc.php');
             //Tout ce qui se trouve en dessous de $_GET['nav'] === create est pour l'insertion de personne dans la BDD
             elseif($_GET['nav'] === 'create'){
         ?>
-<center><h1>Créer une personne</h1></center>
+<center><h1>Formulaire de connexion</h1></center>
         <form action="Cavalier_trait.php" method="post">
             <div class="container">
                 <div class="col-9 float-end bg-warning center-align">
                     <div class="container">
                 <div class="row">
                     <div class="col-5">
-                    <label for="nom" class="form-label">Nom :</label>
-                    <input placeholder="Nom" class="form-control" id="nom" type="text" name="nom">
+                    <label for="nom" class="form-label">Nom d'utilisateur</label>
+                    <input placeholder="Nom d'utilisateur" class="form-control" id="login" type="text" name="login">
                     </div>
                     <div class="col-5">
-                    <label for="prenom" class="form-label">Prenom :</label>
-                    <input placeholder="Prenom" class="form-control" id="prenom" type="text" name="prenom">
+                    <label for="prenom" class="form-label">Mot de passe</label>
+                    <input placeholder="Prenom" class="form-control" id="mdp" type="text" name="mdp">
                     </div>
                 </div>
                     <div class="form-group">
                         <div class="col-5">
-                        <label for="dna" class="form-label">Date de naissance :</label>
-                    <input type="date" id="dna" class="form-control" placeholder="Date de naissance" type="text" name="DNA">
+                        <label for="dna" class="form-label">Référence du client</label>
+                    <input type="text" id="ref_client" class="form-control" placeholder="Référence client" type="text" name="ref_client">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-5">
-                        <label for="galop" class="form-label">Galop :</label>
-                    <input type="number" id="galop" class="form-control" placeholder="Galop" type="text" name="gal_cav">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-5">
-                        <label for="lic" class="form-label">Numéro licence :</label>
-                    <input placeholder="Numero licence" class="form-control" id="lic" type="text" name="num_lic">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-5">
-                        <label for="mail" class="form-label">Mail :</label>
-                    <input type="email" id="mail" class="form-control" placeholder="Mail" type="text" name="mail">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-5">
-                        <label for="tel" class="form-label">Numéro de téléphone :</label>
-                    <input type="number" id="tel" class="form-control" placeholder="Telephone" type="text" name="telephone">
-                    </div>
-                    </div>
-                        <a type="button" class="btn btn-secondary" href="Cavalier_Affiche.php">Retour</a>
-                    <button name="create" type="submit" class="btn btn-primary">Enregistrer</button>
-                </div>
-                </div>
             </div>
         </form>
         <?php

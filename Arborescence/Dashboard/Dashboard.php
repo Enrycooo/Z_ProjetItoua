@@ -26,11 +26,21 @@ include('../include/defines.inc.php');
     </script>
     <?php
         if(!isset($_GET["nav"]) || $_GET["nav"] === "read"){
-            
+            ?>
+    
+            <?php
         }elseif($_GET["nav"] === "inscription"){
-            
+            ?>
+    
+            <?php
         }elseif($_GET["nav"] === "connexion"){
-            
-        }elseif($_GET["nav"] === "")
+            ?>
+    
+            <?php
+        }elseif($_GET["nav"] === "affichage"){
+            ?>
+    
+            <?php
+        }
     ?>
 </body>

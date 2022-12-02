@@ -135,39 +135,6 @@ include('../include/defines.inc.php');
             elseif($_GET['nav'] === 'create'){
         ?>
 <center><h1>Créer une personne</h1></center>
-                <script type="text/javascript">
-                    //fonction javascript permettant de choisir entre responsable et cavalier sans avoir à refresh la page
-        function verif ()
-        {
-            var etat = document.getElementById('check').checked;
-             
-            if(etat)
-            {
-                document.getElementById('1').className = 'off';
-                 
-                document.getElementById('2').className = 'on';
-            }
-            else
-            {
-                document.getElementById('1').className = 'on';
-                 
-                document.getElementById('2').className = 'off';
-            }
-        }
-</script>
-<style type="text/css">
-.on {
-    display: block;
-}
- 
-.off {
-    display: none;
-}
-</style>
-<div class="widget">
-    <center><label for="check">Responsable</label>
-        <input  id="check" name="checkbox" type="checkbox" onChange="verif();" ></center>
-    <div id="1" class="on">
         <form action="Cavalier_trait.php" method="post">
             <div class="container">
                 <div class="col-9 float-end bg-warning center-align">
@@ -218,66 +185,6 @@ include('../include/defines.inc.php');
                 </div>
             </div>
         </form>
-    </div>
-    <div id="2" class="off">
-    <form action="Cavalier_trait.php" method="post">
-        <div class="container">
-                <div class="col-9 float-end bg-warning center-align">
-                    <div class="container">
-                <div class="row">
-                    <div class="col-5">
-                    <label for="nom" class="form-label">Nom :</label>
-                    <input placeholder="Nom" class="form-control" id="nom" type="text" name="nom">
-                    </div>
-                    <div class="col-5">
-                    <label for="prenom" class="form-label">Prenom :</label>
-                    <input placeholder="Prenom" class="form-control" id="prenom" type="text" name="prenom">
-                    </div>
-                </div>
-                        <div class="form-group">
-                        <div class="col-5">
-                            <label for="dna" class="form-label">Date de naissance :</label>
-                <input type="date" placeholder="Date de naissance" class="form-control" type="text" name="DNA">
-                        </div>
-                </div>
-                <div class="form-group">
-                        <div class="col-5">
-                            <label for="rue" class="form-label">Rue :</label>
-                <input placeholder="Rue" class="form-control" id="rue" type="text" name="rue">
-                        </div>
-                </div>
-                <div class="form-group">
-                        <div class="col-5">
-                            <label for="cp" class="form-label">Code postal :</label>
-                <input type="number" id="cp" class="form-control" placeholder="Code postal" type="text" name="cp">
-                        </div>
-                </div>
-                <div class="form-group">
-                        <div class="col-5">
-                            <label for="ville" class="form-label">Ville :</label>
-                <input placeholder="Ville" class="form-control" id="ville" type="text" name="ville">
-                        </div>
-                </div>
-                <div class="form-group">
-                        <div class="col-5">
-                            <label for="mail" class="form-label">Mail :</label>
-                <input type="email" id="mail" class="form-control" placeholder="Mail" type="text" name="mail">
-                        </div>
-                </div>
-                <div class="form-group">
-                        <div class="col-5">
-                            <label for="tel" class="form-label">Numéro de téléphone :</label>
-                <input type="number" id="tel" class="form-control" placeholder="Telephone" type="text" name="telephone">
-                        </div>
-                </div>
-                       <a type="button" class="btn btn-secondary" href="Cavalier_Affiche.php">Retour</a>
-                <button name="create" type="submit" class ="btn btn-primary">Enregistrer</button>
-            </div>
-        </div>
-        </div>
-    </form>
-    </div>
-</div>
         <?php
             }
         ?>

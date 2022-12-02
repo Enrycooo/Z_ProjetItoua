@@ -135,7 +135,7 @@ include('../include/defines.inc.php');
             elseif($_GET['nav'] === 'create'){
         ?>
 <center><h1>Formulaire de connexion</h1></center>
-        <form action="Cavalier_trait.php" method="post">
+        <form action="Inscription_trait.php" method="post">
             <div class="container">
                 <div class="col-9 float-end bg-warning center-align">
                     <div class="container">

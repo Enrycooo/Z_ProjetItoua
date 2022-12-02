@@ -14,8 +14,8 @@ include_once DB_CLASS_DIR.'Client.class.inc.php';
 include_once DB_CLASS_DIR.'Connexion.class.inc.php';
 
 // get main objects
-$oCavalier = new client();
-$oCheval = new connexion();
+$oClient = new client();
+$oConnexion = new connexion();
 try {
     $server = "localhost";
     $username = "root";

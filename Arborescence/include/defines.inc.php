@@ -15,7 +15,7 @@ include_once DB_CLASS_DIR.'Connexion.class.inc.php';
 
 // get main objects
 $oClient = new client();
-$oConnexion = new connexion();
+//$oConnexion = new connexion();
 try {
     $server = "localhost";
     $username = "root";

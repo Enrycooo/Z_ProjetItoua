@@ -1,6 +1,6 @@
 <?php 
 
-class Cavalier{
+class Client{
     const errmessage = "Une erreur s'est produite, signalez la à l'administrateur \n";
         
     public function inscription($nom="", $prenom="" , $tel="", $mail="", $nom_ent="", $login="", $mdp="", $ref_client=""){

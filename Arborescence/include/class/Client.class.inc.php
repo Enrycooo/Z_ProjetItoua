@@ -28,7 +28,26 @@ class Client{
         }catch(PDOException $e){
             return $this->errmessage.$e->getMessage();
         }
-        }
+    }
+        
+    public function db_get_by_id($id_cli=0){
+		$id_cli = (int) $id_cli;
+		if(!$id_cli){
+			return false;
+		}
+
+		global $conn;
+
+		$request = "SELECT * FROM ".DB_TABLE_CLIENT." WHERE id_cli = :id";
+		$sql = $conn->prepare($request);
+		$sql->bindValue(':id', $id_cli, PDO::PARAM_INT);
+		try{
+			$sql->execute();
+			return $sql->fetch(PDO::FETCH_ASSOC);
+		}catch(PDOException $e){
+			return $this->errmessage.$e->getMessage();
+		}
+	}
 
 }
 

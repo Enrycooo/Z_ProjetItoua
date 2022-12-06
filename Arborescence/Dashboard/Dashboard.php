@@ -33,7 +33,7 @@ include('../include/defines.inc.php');
             <center><h1>Formulaire de connexion</h1></center>
             <form action="Cavalier_trait.php" method="post">
             <div class="container">
-                <div class="col-9 float-end bg-warning center-align">
+                <div class="col-9 float-end center-align">
                     <div class="container">
                         <div class="row">
                             <div class="col-5">
@@ -45,7 +45,7 @@ include('../include/defines.inc.php');
                                     <input type="password" placeholder="Mot de passe" class="form-control" id="mdp" type="text" name="mdp">
                             </div>
                             <div class="">
-                                <a type="button" class="btn btn-primary" href="#">Confirmer</a>
+                                <a type="button" class="btn btn-primary" href='Dashboard.php?nav=affichage&id_personne="<?php.$id_personne.?>"'>Confirmer</a>
                             </div>
                         </div>
                     </div>
@@ -54,6 +54,7 @@ include('../include/defines.inc.php');
             </form>
             <?php
         }elseif($_GET["nav"] === "affichage"){
+            $data = $oClient->db_get_by_id($_GET["id_cli"]);
             ?>
             
             <?php

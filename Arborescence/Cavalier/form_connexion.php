@@ -26,10 +26,10 @@
                     </div>
                     <div class="col-5">
                     <label for="prenom" class="form-label">Mot de passe</label>
-                    <input placeholder="Prenom" class="form-control" id="mdp" type="text" name="mdp">
+                    <input type="password" placeholder="Mot de passe" class="form-control" id="mdp" type="text" name="mdp">
                     </div>
                     <div class="">
-                        <a type="button" class="btn btn-primary" href="Cavalier_Affiche.php">Confirmer</a>
+                        <a type="button" class="btn btn-primary" href="#">Confirmer</a>
                     </div>
                 </div>
 

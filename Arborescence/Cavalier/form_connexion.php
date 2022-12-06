@@ -19,20 +19,21 @@
             <div class="container">
                 <div class="col-9 float-end bg-warning center-align">
                     <div class="container">
-                <div class="row">
-                    <div class="col-5">
-                    <label for="nom" class="form-label">Nom d'utilisateur</label>
-                    <input placeholder="Nom d'utilisateur" class="form-control" id="login" type="text" name="login">
-                    </div>
-                    <div class="col-5">
-                    <label for="prenom" class="form-label">Mot de passe</label>
-                    <input type="password" placeholder="Mot de passe" class="form-control" id="mdp" type="text" name="mdp">
-                    </div>
-                    <div class="">
-                        <a type="button" class="btn btn-primary" href="#">Confirmer</a>
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="nom" class="form-label">Nom d'utilisateur</label>
+                                <input placeholder="Nom d'utilisateur" class="form-control" id="login" type="text" name="login">
+                            </div>
+                            <div class="col-5">
+                                <label for="prenom" class="form-label">Mot de passe</label>
+                                    <input type="password" placeholder="Mot de passe" class="form-control" id="mdp" type="text" name="mdp">
+                            </div>
+                            <div class="">
+                                <a type="button" class="btn btn-primary" href="#">Confirmer</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </form>
     </body>

@@ -4,13 +4,13 @@ if(isset($_POST["create"])){
         if($_POST['nom'] != "" && $_POST['prenom'] != "" && $_POST['tel'] != "" && $_POST['mail'] != "" && $_POST['nom_ent'] != ""){
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
-            $dna = $_POST['tel'];
+            $tel = $_POST['tel'];
             $mail = $_POST['mail'];
-            $tel = $_POST['nom_ent'];
+            $nom_ent = $_POST['nom_ent'];
             $sql = $conn->prepare("SELECT id_cli FROM client WHERE nomC = :nom");
             $sql->bindValue(':nom', $_POST["nom"],PDO::PARAM_STR);
             $sql->execute();
-            $req = $oClient->db_inscr($nom, $prenom, $tel, $mail, $nom_ent);
+            $req = $oClient->inscription($nom, $prenom, $tel, $mail, $nom_ent);
             if($req){
             ?>
                 <script>

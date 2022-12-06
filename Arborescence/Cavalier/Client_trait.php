@@ -7,10 +7,13 @@ if(isset($_POST["create"])){
             $tel = $_POST['tel'];
             $mail = $_POST['mail'];
             $nom_ent = $_POST['nom_ent'];
+            $login = $_POST['login'];
+            $mdp = $_POST['mdp'];
+            $ref_client = $_POST['ref_client'];
             $sql = $conn->prepare("SELECT id_cli FROM client WHERE nomC = :nom");
             $sql->bindValue(':nom', $_POST["nom"],PDO::PARAM_STR);
             $sql->execute();
-            $req = $oClient->inscription($nom, $prenom, $tel, $mail, $nom_ent);
+            $req = $oClient->inscription($nom, $prenom, $tel, $mail, $nom_ent, $login, $mdp, $ref_client);
             if($req){
             ?>
                 <script>
@@ -50,7 +53,7 @@ if(isset($_POST["create"])){
                 window.location.replace("http://localhost/Z_Cavalier/Arborescence/Cavalier/Cavalier_Affiche.php");
         </script>
         <?php
-    }*/
+    }
 }elseif(isset($_POST["delete"])){
     $req = $oCavalier->db_soft_delete_one();
     if($req){
@@ -67,5 +70,6 @@ if(isset($_POST["create"])){
                 window.location.replace("http://localhost/Z_Cavalier/Arborescence/Cavalier/Cavalier_Affiche.php");
         </script>
         <?php
-    }
+    }*/
 }
+?>

@@ -11,7 +11,6 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <title>Formulaire de connexion</title>
     
-
     </head>
     <body>
     <center><h1>Formulaire de connexion</h1></center>

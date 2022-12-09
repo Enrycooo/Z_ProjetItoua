@@ -3,12 +3,14 @@
 class Client{
     const errmessage = "Une erreur s'est produite, signalez la à l'administrateur \n";
         
-    public function inscription($nom="", $prenom="" , $tel="", $mail="", $nom_ent="", $login="", $mdp="", $ref_client=""){
+    public function inscription($nom="", $prenom="" , $tel="", $mail="", $nom_ent="", $login="", $codage="", $ref_client=""){
         global $conn;
         $request = "INSERT INTO personne(nomC, preC, telC, mailC, nom_ent)
                     VALUES (:nom, :pre, :tel, :mail, :nom_ent)";
+        
         $request2 = "INSERT INTO connexion(login, mdp, ref_client
                     VALUES (:login, :mdp, :ref_client)";
+        
         $sql = $conn->prepare($request);
         $sql->bindValue(':nom', $nom, PDO::PARAM_STR);
         $sql->bindValue(':pre', $prenom, PDO::PARAM_STR);
@@ -18,7 +20,7 @@ class Client{
         
         $sql2 = $conn->prepare($request2);
         $sql2->bindValue(':login', $login, PDO::PARAM_STR);
-        $sql2->bindValue(':mdp', $mdp, PDO::PARAM_STR);
+        $sql2->bindValue(':mdp', $codage, PDO::PARAM_STR);
         $sql2->bindValue(':ref_client', $ref_client, PDO::PARAM_STR);
         
         try{
@@ -48,6 +50,10 @@ class Client{
 			return $this->errmessage.$e->getMessage();
 		}
 	}
+        
+    public function db_get_id(){
+        $id_cli = "SELECT id_cli FROM ".DB_TABLE_CLIENT."";
+    }
 
 }
 

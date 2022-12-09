@@ -27,6 +27,7 @@ include('../include/defines.inc.php');
             <?php
         }elseif($_GET["nav"] === "inscription"){
             ?>
+            
             <?php
         }elseif($_GET["nav"] === "connexion"){
             ?>
@@ -45,7 +46,7 @@ include('../include/defines.inc.php');
                                     <input type="password" placeholder="Mot de passe" class="form-control" id="mdp" type="text" name="mdp">
                             </div>
                             <div class="">
-                                <a type="button" class="btn btn-primary" href='Dashboard.php?nav=affichage&id_personne="<?php.$id_personne.?>"'>Confirmer</a>
+                                <a type="button" class="btn btn-primary" href='Dashboard.php?nav=affichage&id_cli=<?php echo $id_cli?>'>Confirmer</a>
                             </div>
                         </div>
                     </div>

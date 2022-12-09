@@ -1,6 +1,6 @@
 <?php
 include_once('../include/defines.inc.php');
-if(isset($_POST["create"])){
+if(isset($_POST["inscription"])){
         if($_POST['nom'] != "" && $_POST['prenom'] != "" && $_POST['tel'] != "" && $_POST['mail'] != "" && $_POST['nom_ent'] != ""){
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
@@ -9,11 +9,12 @@ if(isset($_POST["create"])){
             $nom_ent = $_POST['nom_ent'];
             $login = $_POST['login'];
             $mdp = $_POST['mdp'];
+            $codage = hash('SHA512', $mdp);
             $ref_client = $_POST['ref_client'];
             $sql = $conn->prepare("SELECT id_cli FROM client WHERE nomC = :nom");
             $sql->bindValue(':nom', $_POST["nom"],PDO::PARAM_STR);
             $sql->execute();
-            $req = $oClient->inscription($nom, $prenom, $tel, $mail, $nom_ent, $login, $mdp, $ref_client);
+            $req = $oClient->inscription($nom, $prenom, $tel, $mail, $nom_ent, $login, $codage, $ref_client);
             if($req){
             ?>
                 <script>

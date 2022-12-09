@@ -20,7 +20,7 @@ try {
     $server = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "centre_equestre";
+    $dbname = "sensordb";
 
     // connect to DB
     $conn = new PDO("mysql:host=$server;dbname=$dbname","$username","$password");

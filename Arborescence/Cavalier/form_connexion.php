@@ -14,7 +14,7 @@
     </head>
     <body>
     <center><h1>Formulaire de connexion</h1></center>
-        <form action="Cavalier_trait.php" method="post">
+        <form class="box" action="" method="post" name="login">
             <div class="container">
                 <div class="col-9 float-end bg-warning center-align">
                     <div class="container">
@@ -37,3 +37,33 @@
         </form>
     </body>
 </html>
+<?php
+require('../include/defines.inc.php');
+session_start();
+
+if (isset($_POST['login'])){
+	$login = stripslashes($_REQUEST['login']);
+	$_SESSION['login'] = $login;
+	$mdp = stripslashes($_REQUEST['mdp']);
+        $codage = hash('SHA256', $mdp);
+        
+        $request = "SELECT * FROM connexion WHERE login=:name 
+                    and mdp=:mdp";
+        $sql = $conn->prepare($request);
+        $sql->bindValue(':name', $login, PDO::PARAM_STR);
+        $sql->bindValue(':mdp', $codage, PDO::PARAM_STR);
+        $res = $conn->query($request);
+	
+	if ($res->rowCount() == 1) {
+		$user = $res->fetch(PDO::FETCH_ASSOC);
+		// vérifier si l'utilisateur est un administrateur ou un utilisateur
+		if ($user['type'] == 'admin') {
+			header('location: http://localhost/z_ProjetItoua/Arborescence/Dashboard/Dashboard.php?nav=affichage&id_cli=');		  
+		}else{
+			header('location: http://localhost/z_ProjetItoua/Arborescence/Dashboard/Dashboard.php');
+		}
+	}else{
+		$message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
+	}
+}
+?>

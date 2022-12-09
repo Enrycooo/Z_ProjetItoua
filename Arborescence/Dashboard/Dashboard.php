@@ -79,16 +79,16 @@ include('../include/defines.inc.php');
         }elseif($_GET["nav"] === "connexion"){
             session_start();
 
-if (isset($_POST['username'])){
-	$username = stripslashes($_REQUEST['username']);
-	$_SESSION['username'] = $username;
-	$password = stripslashes($_REQUEST['password']);
-        $codage = hash('SHA256', $password);
+if (isset($_POST['login'])){
+	$login = stripslashes($_REQUEST['login']);
+	$_SESSION['login'] = $login;
+	$password = stripslashes($_REQUEST['mdp']);
+        $codage = hash('SHA512', $password);
         
-        $request = "SELECT * FROM `users` WHERE username='$username' 
-                    and password='$codage'";
+        $request = "SELECT * FROM `connexion` WHERE login='$login' 
+                    and mdp='$codage'";
         $sql = $conn->prepare($request);
-        $sql->bindValue(':name', $username, PDO::PARAM_STR);
+        $sql->bindValue(':name', $login, PDO::PARAM_STR);
         $sql->bindValue(':pwd', $codage, PDO::PARAM_STR);
         $res = $conn->query($request);
 	
@@ -96,9 +96,9 @@ if (isset($_POST['username'])){
 		$user = $res->fetch(PDO::FETCH_ASSOC);
 		// vérifier si l'utilisateur est un administrateur ou un utilisateur
 		if ($user['type'] == 'admin') {
-			header('location: http://localhost/Z_Cavalier/dashboard/index.php');		  
+			header('location: http://localhost/z_ProjetItoua/Arborescence/Dashboard/Dashboard.php');		  
 		}else{
-			header('location: http://localhost/Z_Cavalier/front/index.html');
+			header('location: http://localhost/z_ProjetItoua/Arborescence/Dashboard/Dashboard.php?nav=affichage&id_cli='.$id_cli.'');
 		}
 	}else{
 		$message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
@@ -106,21 +106,21 @@ if (isset($_POST['username'])){
 }
             ?>
             <center><h1>Formulaire de connexion</h1></center>
-            <form action="Client_trait.php" method="post">
+            <form class="box" action="" method="post" name="username">
             <div class="container">
                 <div class="col-9 float-end center-align">
                     <div class="container">
                         <div class="row">
                             <div class="col-5">
                                 <label for="nom" class="form-label">Nom d'utilisateur</label>
-                                <input placeholder="Nom d'utilisateur" class="form-control" id="login" type="text" name="login">
+                                <input type="text" class="box-input" name="login" placeholder="Nom d'utilisateur">
                             </div>
                             <div class="col-5">
                                 <label for="prenom" class="form-label">Mot de passe</label>
-                                    <input type="password" placeholder="Mot de passe" class="form-control" id="mdp" type="text" name="mdp">
+                                    <input type="password" class="box-input" name="mdp" placeholder="Mot de passe">
                             </div>
                             <div class="">
-                                <a type="button" class="btn btn-primary" href=''>Confirmer</a>
+                                <input type="submit" value="connexion " name="submit" class="box-button">
                             </div>
                         </div>
                     </div>
@@ -128,10 +128,14 @@ if (isset($_POST['username'])){
             </div>
             </form>
             <?php
-        }elseif($_GET["nav"] === "affichage"){
+        }elseif($_GET["nav"] === "capteur"){
             $data = $oClient->db_get_by_id($_GET["id_cli"]);
             ?>
             
+            <?php
+        }elseif($_GET["nav"] === "don_cap"){
+            ?>
+            <p>COUCOU</p>
             <?php
         }
     ?>

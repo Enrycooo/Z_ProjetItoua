@@ -8,8 +8,8 @@ class Client{
         $request = "INSERT INTO client(nomC, preC, telC, mailC, nom_ent)
                     VALUES (:nom, :pre, :tel, :mail, :nom_ent)";
         
-        $request2 = "INSERT INTO connexion(login, mdp,type, ref_client)
-                    VALUES (:login, :mdp, 'user, LAST_INSERT_ID() )";
+        $request2 = "INSERT INTO connexion(login, mdp, type, ref_client)
+                    VALUES (:login, :mdp, 'user', LAST_INSERT_ID() )";
         
         $sql = $conn->prepare($request);
         $sql->bindValue(':nom', $nom, PDO::PARAM_STR);
@@ -49,7 +49,7 @@ class Client{
 		return $this->errmessage.$e->getMessage();
 	}
     }
-
+    
 }
 
 ?>

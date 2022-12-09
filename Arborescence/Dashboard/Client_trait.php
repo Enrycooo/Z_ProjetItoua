@@ -10,7 +10,6 @@ if(isset($_POST["inscription"])){
             $login = $_POST['login'];
             $mdp = $_POST['mdp'];
             $codage = hash('SHA512', $mdp);
-            $ref_client = $_POST['ref_client'];
             $req = $oClient->db_inscription($nom, $prenom, $tel, $mail, $nom_ent, $login, $codage);
             if($req){
             ?>

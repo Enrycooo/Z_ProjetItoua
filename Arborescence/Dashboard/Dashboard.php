@@ -44,7 +44,7 @@ include('../include/defines.inc.php');
                             </div>
                             
                             <div class="col-5">
-                                <label for="entreprise" class="form-label">Pseudo</label>
+                                <label for="entreprise" class="form-label">Nom d'utilisateur</label>
                                 <input placeholder="Pseudo" class="form-control" id="login" type="text" name="login">
                             </div>
                             

@@ -1,6 +1,6 @@
 <?php 
 
-class Cavalier{
+class Client{
     const errmessage = "Une erreur s'est produite, signalez la à l'administrateur \n";
         
     public function inscription($nom="", $prenom="" , $tel="", $mail="", $nom_ent="", $login="", $mdp="", $ref_client=""){
@@ -28,7 +28,26 @@ class Cavalier{
         }catch(PDOException $e){
             return $this->errmessage.$e->getMessage();
         }
-        }
+    }
+        
+    public function db_get_by_id($id_cli=0){
+		$id_cli = (int) $id_cli;
+		if(!$id_cli){
+			return false;
+		}
+
+		global $conn;
+
+		$request = "SELECT * FROM ".DB_TABLE_CLIENT." WHERE id_cli = :id";
+		$sql = $conn->prepare($request);
+		$sql->bindValue(':id', $id_cli, PDO::PARAM_INT);
+		try{
+			$sql->execute();
+			return $sql->fetch(PDO::FETCH_ASSOC);
+		}catch(PDOException $e){
+			return $this->errmessage.$e->getMessage();
+		}
+	}
 
 }
 

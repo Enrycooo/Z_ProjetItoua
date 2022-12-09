@@ -22,19 +22,41 @@ include('../include/defines.inc.php');
     <?php
         if(!isset($_GET["nav"]) || $_GET["nav"] === "read"){
             ?>
-    
+            <a type='button' class='btn btn-primary' href='Dashboard.php?nav=inscription'>S'inscrire</a>
+            <a type='button' class='btn btn-primary' href='Dashboard.php?nav=connexion'>Se connecter</a>
             <?php
         }elseif($_GET["nav"] === "inscription"){
             ?>
-    
             <?php
         }elseif($_GET["nav"] === "connexion"){
             ?>
-    
+            <center><h1>Formulaire de connexion</h1></center>
+            <form action="Cavalier_trait.php" method="post">
+            <div class="container">
+                <div class="col-9 float-end center-align">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="nom" class="form-label">Nom d'utilisateur</label>
+                                <input placeholder="Nom d'utilisateur" class="form-control" id="login" type="text" name="login">
+                            </div>
+                            <div class="col-5">
+                                <label for="prenom" class="form-label">Mot de passe</label>
+                                    <input type="password" placeholder="Mot de passe" class="form-control" id="mdp" type="text" name="mdp">
+                            </div>
+                            <div class="">
+                                <a type="button" class="btn btn-primary" href='Dashboard.php?nav=affichage&id_personne="<?php.$id_personne.?>"'>Confirmer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
             <?php
         }elseif($_GET["nav"] === "affichage"){
+            $data = $oClient->db_get_by_id($_GET["id_cli"]);
             ?>
-    
+            
             <?php
         }
     ?>

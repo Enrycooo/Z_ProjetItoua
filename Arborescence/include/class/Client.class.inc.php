@@ -30,6 +30,17 @@ class Client{
             return $this->errmessage.$e->getMessage();
         }
     }
+    public function db_get_all_cap($id_cli = ""){
+        global $conn;
+
+		$request = "SELECT * FROM ".DB_TABLE_CAPTEUR." WHERE ref_cli = '.$id_cli.';";
+		try{
+			$sql = $conn->query($request);
+			return $sql->fetchAll(PDO::FETCH_ASSOC);
+		}catch(PDOException $e){
+			return $this->errmessage.$e->getMessage();
+		}
+    }
         
     public function db_get_by_id($id_cli=0){
 	$id_cli = (int) $id_cli;
@@ -39,7 +50,7 @@ class Client{
 
 	global $conn;
 
-	$request = "SELECT * FROM ".DB_TABLE_CLIENT." WHERE id_cli = :id";
+	$request = "SELECT * FROM ".DB_TABLE_CAPTEUR." WHERE ref_cli = :id";
 	$sql = $conn->prepare($request);
 	$sql->bindValue(':id', $id_cli, PDO::PARAM_INT);
 	try{

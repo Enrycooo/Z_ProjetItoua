@@ -85,12 +85,14 @@ if (isset($_POST['login'])){
 	$password = stripslashes($_REQUEST['mdp']);
         $codage = hash('SHA512', $password);
         
-        $request = "SELECT * FROM `connexion` WHERE login='$login' 
+        $request = "SELECT ref_client FROM `connexion` WHERE login='$login' 
                     and mdp='$codage'";
         $sql = $conn->prepare($request);
         $sql->bindValue(':name', $login, PDO::PARAM_STR);
         $sql->bindValue(':pwd', $codage, PDO::PARAM_STR);
         $res = $conn->query($request);
+        $ligne = $res->fetch(PDO::FETCH_ASSOC);
+        $id_cli = $ligne['ref_client'];
 	
 	if ($res->rowCount() == 1) {
 		$user = $res->fetch(PDO::FETCH_ASSOC);
@@ -98,7 +100,7 @@ if (isset($_POST['login'])){
 		if ($user['type'] == 'admin') {
 			header('location: http://localhost/z_ProjetItoua/Arborescence/Dashboard/Dashboard.php');		  
 		}else{
-			header('location: http://localhost/z_ProjetItoua/Arborescence/Dashboard/Dashboard.php?nav=affichage&id_cli='.$id_cli.'');
+			header('location: http://localhost/z_ProjetItoua/Arborescence/Dashboard/Dashboard.php?nav=capteur&id_cli='.$id_cli.'');
 		}
 	}else{
 		$message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
@@ -129,9 +131,40 @@ if (isset($_POST['login'])){
             </form>
             <?php
         }elseif($_GET["nav"] === "capteur"){
-            $data = $oClient->db_get_by_id($_GET["id_cli"]);
+            $data = $oClient->db_get_all_cap($_GET["id_cli"]);
             ?>
-            
+            <div class="row">
+            <div class="col">
+                <table class='table table-hover'>
+                    <thead>
+                        <th style='text-align :center'>ID</th>
+                        <th style='text-align :center'>Nom capteur</th>
+                        <th style='text-align :center'>Ref client</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($data as $key) {
+                            $id_cap = $key["id_cap"];
+                            echo " <tr data-value=" . $id_cap . ">
+                            <td><center>" . $key["id_cap"] . "</center></td>
+                            <td><center>" . $key["nom_cap"] . "</center></td>
+                            <td><center>" . $key["ref_cli"] . "</center></td>
+                            <td style='display:flex; justify-content: space-evenly;'>
+                                <a type='button' class='btn btn-primary' href='Cavalier_Affiche.php?nav=update&id_personne=" . $id_cap . "'>
+                                    Modifier
+                                </a>
+                                <form action='Cavalier_trait.php' method='post'>
+                                    <input type='hidden' name='id_personne' value=" . $id_cap . ">
+                                    <button type='submit' name='delete' class='delete-btn btn btn-danger'>Supprimer</button>
+                                </form>
+                            </td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            </div>
             <?php
         }elseif($_GET["nav"] === "don_cap"){
             ?>

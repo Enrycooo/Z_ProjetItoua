@@ -4,6 +4,7 @@
 // define database tables names
 define('DB_TABLE_CLIENT', 'client');
 define('DB_TABLE_CONNEXION', 'connexion');
+define('DB_TABLE_CAPTEUR', 'capteur');
 
 //define paths
 define('DB_CLASS_DIR', 'class/');

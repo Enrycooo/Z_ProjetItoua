@@ -9,10 +9,6 @@ include('../include/defines.inc.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <title>Dashboard</title>
 </head>
 <body>
@@ -150,11 +146,11 @@ if (isset($_POST['login'])){
                             <td><center>" . $key["nom_cap"] . "</center></td>
                             <td><center>" . $key["ref_cli"] . "</center></td>
                             <td style='display:flex; justify-content: space-evenly;'>
-                                <a type='button' class='btn btn-primary' href='Cavalier_Affiche.php?nav=update&id_personne=" . $id_cap . "'>
-                                    Modifier
+                                <a type='button' class='btn btn-primary' href='Dashboard.php?nav=don_cap&id_personne=" . $id_cap . "'>
+                                    Afficher
                                 </a>
-                                <form action='Cavalier_trait.php' method='post'>
-                                    <input type='hidden' name='id_personne' value=" . $id_cap . ">
+                                <form action='Client_trait.php' method='post'>
+                                    <input type='hidden' name='id_cap' value=" . $id_cap . ">
                                     <button type='submit' name='delete' class='delete-btn btn btn-danger'>Supprimer</button>
                                 </form>
                             </td>

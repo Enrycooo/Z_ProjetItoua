@@ -52,21 +52,19 @@ if(isset($_POST["inscription"])){
         <?php
     }
 }elseif(isset($_POST["delete"])){
-    $req = $oCavalier->db_soft_delete_one();
+    $req = $oClient->db_delete_one();
     if($req){
         ?>
             <script>
                 alert("Cela a fonctionné")
-                window.location.replace("http://localhost/Z_Cavalier/Arborescence/Cavalier/Cavalier_Affiche.php");
             </script>
         <?php
     }else{
     ?>
         <script>
                 alert("La suppression n'a pas fonctionné")
-                window.location.replace("http://localhost/Z_Cavalier/Arborescence/Cavalier/Cavalier_Affiche.php");
         </script>
         <?php
     }*/
-}
+    }
 ?>

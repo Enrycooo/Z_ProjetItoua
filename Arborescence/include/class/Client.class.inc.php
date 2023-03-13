@@ -61,6 +61,26 @@ class Client{
 	}
     }
     
+    public function db_delete_one($id_cap=0){
+        $id_cap = (int) $_POST['id_cap'];
+
+        if(!$id_cap) {
+            return false;
+        }
+
+        global $conn;
+
+        $request = "DELETE FROM ".DB_TABLE_CAPTEUR." WHERE id_cap = :id_cap;";
+        $sql = $conn->prepare($request);
+        $sql->bindValue(':id_cap', $id_cap, PDO::PARAM_INT);
+        try{
+            $sql->execute();
+            return true;
+        }catch(PDOException $e){
+            return $this->errmessage.$e->getMessage();
+        }
+    }
+    
 }
 
 ?>
